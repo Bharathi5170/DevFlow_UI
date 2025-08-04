@@ -5,10 +5,11 @@ import FiltersPanel from './components/FiltersPanel';
 import RecentProjects from './components/RecentProjects';
 import AgentWorkflow from './components/AgentWorkflow';
 import ReviewPage from './components/ReviewPage';
+import CodeEditor from './components/CodeEditor';
 
 function App() {
   const [isRecentProjectsOpen, setIsRecentProjectsOpen] = useState(false);
-  const [currentView, setCurrentView] = useState<'filters' | 'loading' | 'workflow' | 'review'>('filters');
+  const [currentView, setCurrentView] = useState<'filters' | 'loading' | 'workflow' | 'review' | 'editor'>('filters');
   const [selectedAgents, setSelectedAgents] = useState<string[]>(['Requirement Agent', 'Design Agent']);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -34,6 +35,18 @@ function App() {
   const handleNavigateToReview = () => {
     setCurrentView('review');
   };
+
+  const handleNavigateToEditor = () => {
+    setCurrentView('editor');
+  };
+
+  if (currentView === 'editor') {
+    return (
+      <CodeEditor 
+        onBackToWorkflow={() => setCurrentView('workflow')}
+      />
+    );
+  }
 
   if (currentView === 'review') {
     return (
@@ -62,6 +75,7 @@ function App() {
         selectedAgents={selectedAgents}
         onBackToFilters={handleBackToFilters}
         onNavigateToReview={handleNavigateToReview}
+        onNavigateToEditor={handleNavigateToEditor}
       />
     );
   }

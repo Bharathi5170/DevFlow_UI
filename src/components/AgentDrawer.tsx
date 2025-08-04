@@ -7,6 +7,7 @@ interface AgentDrawerProps {
   agentName: string;
   agentColor: string;
   onNavigateToReview: () => void;
+  onNavigateToEditor: () => void;
   onStatusChange: (agentName: string, status: 'running' | 'completed' | 'failed') => void;
   onDataUpdate: (agentName: string, data: any) => void;
   previousAgentData: any;
@@ -26,6 +27,7 @@ const AgentDrawer: React.FC<AgentDrawerProps> = ({
   agentName, 
   agentColor, 
   onNavigateToReview, 
+  onNavigateToEditor,
   onStatusChange,
   onDataUpdate,
   previousAgentData
@@ -524,8 +526,15 @@ This document contains the business requirements and specifications for your pro
 
               {/* Review Button */}
               {allCompleted && (
-                <div className="bg-green-900 bg-opacity-30 border border-green-600 rounded-lg p-4 text-center">
-                  <p className="text-green-300 font-medium">All operations completed successfully!</p>
+                <div className="bg-green-900 bg-opacity-30 border border-green-600 rounded-lg p-4 text-center mb-4">
+                  <p className="text-green-300 font-medium mb-3">All operations completed successfully!</p>
+                  <button
+                    onClick={onNavigateToEditor}
+                    className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 shadow-lg hover:shadow-xl flex items-center space-x-2 mx-auto"
+                  >
+                    <Code size={16} />
+                    <span>Open Code Editor</span>
+                  </button>
                 </div>
               )}
 

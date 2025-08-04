@@ -6,9 +6,10 @@ interface AgentWorkflowProps {
   selectedAgents: string[];
   onBackToFilters: () => void;
   onNavigateToReview: () => void;
+  onNavigateToEditor: () => void;
 }
 
-const AgentWorkflow: React.FC<AgentWorkflowProps> = ({ selectedAgents, onBackToFilters, onNavigateToReview }) => {
+const AgentWorkflow: React.FC<AgentWorkflowProps> = ({ selectedAgents, onBackToFilters, onNavigateToReview, onNavigateToEditor }) => {
   const [selectedAgent, setSelectedAgent] = React.useState<string | null>(null);
   const [agentStatuses, setAgentStatuses] = React.useState<{[key: string]: 'pending' | 'running' | 'completed' | 'failed'}>({});
   const [currentActiveAgent, setCurrentActiveAgent] = React.useState<string | null>(null);
@@ -268,6 +269,7 @@ const AgentWorkflow: React.FC<AgentWorkflowProps> = ({ selectedAgents, onBackToF
         agentName={selectedAgent || ''}
         agentColor={selectedAgent ? getAgentColor(selectedAgent) : ''}
         onNavigateToReview={onNavigateToReview}
+        onNavigateToEditor={onNavigateToEditor}
         onStatusChange={handleAgentStatusChange}
         onDataUpdate={handleDataUpdate}
         previousAgentData={selectedAgent ? agentData[getPreviousAgent(selectedAgent)] : null}
