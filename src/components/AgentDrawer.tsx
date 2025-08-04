@@ -524,12 +524,9 @@ This document contains the business requirements and specifications for your pro
 
               {/* Review Button */}
               {allCompleted && (
-                <button 
-                  onClick={handleCloseOperations}
-                  className="w-full bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-lg font-medium transition-all duration-200 shadow-lg hover:shadow-xl"
-                >
-                  Review Results
-                </button>
+                <div className="bg-green-900 bg-opacity-30 border border-green-600 rounded-lg p-4 text-center">
+                  <p className="text-green-300 font-medium">All operations completed successfully!</p>
+                </div>
               )}
 
               {/* Terminate Button */}
