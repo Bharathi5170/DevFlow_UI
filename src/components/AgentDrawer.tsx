@@ -443,51 +443,29 @@ This document contains the business requirements and specifications for your pro
             {/* Footer */}
             <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-gray-700">
               {isRequirementAgent ? (
-                <div className="flex space-x-3">
-                  <button
-                    onClick={handleGenerate}
-                    disabled={!isGenerateEnabled}
-                    className={`flex-1 py-3 px-6 rounded-lg font-medium transition-all duration-200 ${
-                      isGenerateEnabled
-                        ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl'
-                        : 'bg-gray-700 text-gray-400 cursor-not-allowed'
-                    }`}
-                  >
-                    Generate
-                  </button>
-                  {selectedFile && (
-                    <button
-                      onClick={handlePreview}
-                      className="px-4 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors duration-200 flex items-center justify-center"
-                      title="Preview Document"
-                    >
-                      <Eye size={20} />
-                    </button>
-                  )}
-                </div>
+                <button
+                  onClick={handleGenerate}
+                  disabled={!isGenerateEnabled}
+                  className={`w-full py-3 px-6 rounded-lg font-medium transition-all duration-200 ${
+                    isGenerateEnabled
+                      ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl'
+                      : 'bg-gray-700 text-gray-400 cursor-not-allowed'
+                  }`}
+                >
+                  Generate
+                </button>
               ) : (
-                <div className="flex space-x-3">
-                  <button
-                    onClick={handleGenerate}
-                    disabled={!previousAgentData}
-                    className={`flex-1 py-3 px-6 rounded-lg font-medium transition-all duration-200 ${
-                      previousAgentData
-                        ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl'
-                        : 'bg-gray-700 text-gray-400 cursor-not-allowed'
-                    }`}
-                  >
-                    Process
-                  </button>
-                  {previousAgentData?.generatedDocument && (
-                    <button
-                      onClick={handlePreview}
-                      className="px-4 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors duration-200 flex items-center justify-center"
-                      title="Preview Input"
-                    >
-                      <Eye size={20} />
-                    </button>
-                  )}
-                </div>
+                <button
+                  onClick={handleGenerate}
+                  disabled={!previousAgentData}
+                  className={`w-full py-3 px-6 rounded-lg font-medium transition-all duration-200 ${
+                    previousAgentData
+                      ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl'
+                      : 'bg-gray-700 text-gray-400 cursor-not-allowed'
+                  }`}
+                >
+                  Process
+                </button>
               )}
             </div>
           </>
